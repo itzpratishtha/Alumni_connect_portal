@@ -1,0 +1,347 @@
+/* ===================== Reset & Base ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top left, #1e1e2f, #2a2a5a, #3b3b8f);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===================== Navbar ===================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  /* FIX 1: Set position: relative so absolute nav-links are contained */
+  position: relative; 
+  /* FIX 2: Give navbar a high z-index to stay on top of the main content */
+  z-index: 1000; 
+}
+
+.navbar .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar .logo-container img {
+  width: 120px;
+  height: auto;
+}
+
+.navbar h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===================== Hero Section ===================== */
+.hero {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.hero h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* ===================== Login Form ===================== */
+.form-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Logo inside login card */
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 250px;  /* adjust logo size */
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.logo h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.logo p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.input-group input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px #00b4d8;
+  background: rgba(255,255,255,0.25);
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #00b4d8;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 15px;
+}
+
+.btn:hover {
+  background-color: #0096c7;
+}
+
+/* Footer Links */
+.footer-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.footer-text a {
+  color: #90e0ef;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== Footer ===================== */
+footer {
+  text-align: center;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  font-size: 13px;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 500px) {
+  .login-box {
+    padding: 20px;
+  }
+
+  .logo img {
+    width: 80px;
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ... existing hamburger and menu-toggle styles ... */
+
+  /* NEW: Show the hamburger icon */
+  .hamburger {
+    display: flex;
+    z-index: 1001; /* Ensure hamburger icon is above the menu itself */
+  }
+
+  /* login.css - Inside @media (max-width: 768px) */
+
+/* NEW: Rule to show nav-links when the checkbox is checked */
+.menu-toggle:checked ~ .nav-links {
+  transform: translateX(0); /* Show the menu */
+}
+
+/* NEW: Fix for the full-width link items in the mobile menu */
+.nav-links a {
+  margin: 10px 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Make links take full width for better tapping */
+  width: calc(100% - 40px);
+}
+
+  /* NEW: Style the navigation links for mobile */
+  .nav-links {
+    /* FIX 3: Change to position: absolute to take it out of flow */
+    position: absolute; 
+    
+    /* FIX 4: Top position needs to be the height of the navbar */
+    /* If your navbar is 50px tall, set top: 50px. Use 100% of the navbar's height for safety. */
+    top: 100%; 
+    
+    left: 0;
+    width: 100%;
+    transform: translateX(-100%); 
+    display: flex;
+    flex-direction: column;
+    background: rgba(42, 42, 90, 0.95); 
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px 0;
+    
+    /* FIX 5: Set a high z-index to ensure it is above the login-box (which has a z-index via box-shadow) */
+    z-index: 999; 
+    
+    /* NEW: Add min-height to cover the whole screen below the navbar if needed */
+    min-height: calc(100vh - 50px); /* 100vh minus the assumed navbar height (100% of the viewport height minus the navbar height) */
+    /* Also ensure links don't stretch */
+    align-items: flex-start;
+  }
+
+  .nav-links a {
+    margin: 10px 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Make links take full width for better tapping */
+    width: calc(100% - 40px);
+  }
+
+   /* NEW FIX 1: Ensure the navbar maintains space-between layout */
+  .navbar {
+    flex-wrap: nowrap; /* Prevent elements from wrapping */
+  }
+
+  /* NEW FIX 2: Shrink the logo container to allow space for the hamburger */
+  .navbar .logo-container {
+    /* Allow it to shrink and not force the hamburger to wrap */
+    flex-shrink: 1; 
+    /* Limit the max width so it doesn't push the hamburger too far */
+    max-width: 70%; 
+  }
+  
+  /* NEW FIX 3: Shrink the logo image */
+  .navbar .logo-container img {
+    width: 90px; /* Reduce logo size on mobile */
+  }
+  
+  /* NEW FIX 4: Shrink the logo text */
+  .navbar h1 {
+    font-size: 16px; /* Reduce text size on mobile */
+    /* Add a fix for long text on very small screens, e.g., using ellipsis */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* NEW: Show the hamburger icon */
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+  
+  /* ... rest of the nav-links styles ... */
+
+  /* NEW: Rule to show nav-links when the checkbox is checked */
+  .menu-toggle:checked ~ .nav-links {
+    transform: translateX(0); /* Show the menu */
+  }
+
+  /* NEW: Fix for the full-width link items in the mobile menu */
+  .nav-links a {
+    margin: 10px 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: calc(100% - 40px);
+  }
+
+  .navbar .logo-container h1 {
+    display: none; /* This will hide the "PIET Alumni Connect" text */
+  }
+
+  /* You may want to adjust the gap in the logo container since the text is gone */
+  .navbar .logo {
+    gap: 0; 
+  }
+
+  /* ... rest of the media query styles ... */
+}
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 900px) {
+  .hero {
+    width: 92%;
+    padding: 38px 18px;
+  }
+
+  .cards-section {
+    width: 92%;
+  }
+
+  /* Filter bar fix: Remove fixed width on small screens so it takes up space naturally */
+  .filter-bar input {
+    width: 100%;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
